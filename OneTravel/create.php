@@ -27,35 +27,37 @@
                         ?>
                     </div>
                 <?php endif; ?>
-            </div>
-            <div class="text-center mt-3">
-                <h1>Create A New Blog</h1>
-            </div>
-            <div class="row mt-5 mb-5">
-                <div class="col-md-6 offset-md-3">
-                    <form action="create.php" method="post">
-                        <select name="country" class="form-control">
-                            <option value="london">London</option>
-                            <option value="japan">Japan</option>
-                            <option value="dubai">Dubai</option>
-                            <option value="italy">Italy</option>
-                        </select>
 
-                        <select name="destination" class="form-control">
-                            <option value="italy">Italy</option>
-                            <option value="italy">Italy</option>
-                            <option value="italy">Italy</option>
-                            <option value="italy">Italy</option>
-                        </select>
-
-                        <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control">
-                        <label for="content">Content</label>
-                        <textarea name="content" cols="50" rows="10" class="form-control"></textarea>
-
-                        <button type="submit" name="submit" class="btn btn-outline-primary btn-block">Submit</button>
-                    </form>
+                <div class="text-center mt-3">
+                    <h1>Create A New Blog</h1>
                 </div>
+                <div class="row mt-5 mb-5">
+                    <div class="col-md-6 offset-md-3 text-left">
+                        <form action="create.php" method="post">
+                            <label for="title" class="mt-1" >  Title</label>
+                            <input type="text" name="title" class="form-control">
+
+                            <select name="country" class="form-control mt-1">
+                                <option value="london">London</option>
+                                <option value="japan">Japan</option>
+                                <option value="dubai">Dubai</option>
+                                <option value="italy">Italy</option>
+                            </select>
+
+                            <select name="destination" class="form-control mt-1">
+                                <option value="italy">Italy</option>
+                                <option value="italy">Italy</option>
+                                <option value="italy">Italy</option>
+                                <option value="italy">Italy</option>
+                            </select>
+
+                            <label for="content" class="mt-1">  Content</label>
+                            <textarea name="content" cols="50" rows="10" class="form-control"></textarea>
+
+                            <button type="submit" name="submit" class="btn btn-outline-primary btn-block mt-2">Submit</button>
+                        </form>
+                    </div>
+                </div>`
             </div>
         <?php endif; ?>
     </div>
