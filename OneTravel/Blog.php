@@ -2,6 +2,10 @@
 include 'includes/header.php';
  ?>
 
+  <div class="container ">
+      <a href="create.php" class="btn btn-primary">CREATE BLOG</a>
+  </div>
+
    <div class="container-fluid pr-0 pl-0"> <!-- slide show -->
        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
          <div class="carousel-inner">
