@@ -34,10 +34,7 @@
                 <div class="row mt-5 mb-5">
                     <div class="col-md-6 offset-md-3 text-left">
                         <form action="create.php" method="post">
-                            <label for="title" class="mt-1" >  Title</label>
-                            <input type="text" name="title" class="form-control">
-
-                            <select name="country" class="form-control mt-1">
+                        <select name="country" class="form-control mt-1">
                                 <option value="london">London</option>
                                 <option value="japan">Japan</option>
                                 <option value="dubai">Dubai</option>
@@ -51,6 +48,12 @@
                                 <option value="italy">Italy</option>
                             </select>
 
+                            <label for="title" class="mt-1" >  Title</label>
+                            <input type="text" name="title" class="form-control">
+
+                            <label for="img" class="mt-1">Put your image link below</label>
+                            <input type="text" name="img" class="form-control">
+                            
                             <label for="content" class="mt-1">  Content</label>
                             <textarea name="content" cols="50" rows="10" class="form-control"></textarea>
 
