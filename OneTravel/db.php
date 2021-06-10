@@ -2,7 +2,7 @@
     $host = 'localhost';
     $user = 'root';
     $pw = '';
-    $db = '??';
+    $db = 'onetravel';
 
     $conn = new mysqli($host, $user, $pw, $db);
 ?>

@@ -1,10 +1,10 @@
 <?php 
-    include 'includes/header.php';
-    include 'function/postmanager.php';
     include 'config.php';
+    include 'function/postmanager.php';
+    include 'includes/header.php';
 
     if (isset($_POST['POST'])) {
-        checkPost($_POST, $_SESSION['user_id'], $errors, $conn);
+        //checkPost($_POST, $_SESSION['user_id'], $errors, $conn);
     }
 
 ?>
@@ -34,18 +34,18 @@
                 <div class="row mt-5 mb-5">
                     <div class="col-md-6 offset-md-3 text-left">
                         <form action="create.php" method="post">
-                        <select name="country" class="form-control mt-1">
-                                <option value="london">London</option>
-                                <option value="japan">Japan</option>
-                                <option value="dubai">Dubai</option>
-                                <option value="italy">Italy</option>
+                            <select name="country" onchange="changeCountry()" class="form-control mt-1 country">
+                                <option value="England">England</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Dubai">Dubai</option>
+                                <option value="Italy">Italy</option>
                             </select>
 
-                            <select name="destination" class="form-control mt-1">
-                                <option value="italy">Italy</option>
-                                <option value="italy">Italy</option>
-                                <option value="italy">Italy</option>
-                                <option value="italy">Italy</option>
+                            <select name="destination" class="form-control mt-1 destination">
+                                <option value="Italy">Italy</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Italy">Italy</option>
                             </select>
 
                             <label for="title" class="mt-1" >  Title</label>
