@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `author_id` int(11) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`com_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+);
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `com_like` (
   `comment_id` int(11) NOT NULL,
   `author_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+);
 
 -- --------------------------------------------------------
 
@@ -61,10 +61,9 @@ CREATE TABLE IF NOT EXISTS `com_like` (
 DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `c_id` int(11) NOT NULL AUTO_INCREMENT,
-  `des_id` int(11) NOT NULL,
   `c_name` varchar(255) NOT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); 
 
 -- --------------------------------------------------------
 
@@ -76,9 +75,10 @@ DROP TABLE IF EXISTS `destination`;
 CREATE TABLE IF NOT EXISTS `destination` (
   `des_id` int(11) NOT NULL AUTO_INCREMENT,
   `des_name` varchar(255) NOT NULL,
+  `c_id` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`des_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); 
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `num_like` int(11) NOT NULL,
   PRIMARY KEY (`post_id`),
   KEY `author_id` (`author_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); 
 
 -- --------------------------------------------------------
 
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `post_like` (
   `post_id` int(11) NOT NULL,
   `author_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); 
 
 -- --------------------------------------------------------
 
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_role` tinyint(1) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); 
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
