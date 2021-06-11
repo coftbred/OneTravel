@@ -4,16 +4,17 @@ let selector_country = document.querySelector("form select.country");
 let selector_destination = document.querySelector("form select.destination");
 function changeCountry() {
     let theAction = "function/ajaxmanager.php";
-    let country = selector_country.value;
-    console.log(country);
+    let c_id = selector_country.value;
+    console.log(c_id);
     console.log(theAction);
-    destinationAjax(country, theAction);
+    removeAllDestination(selector_destination);
+    destinationAjax(c_id, theAction);
 };
 
 function destinationAjax(country, theAction) {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", theAction, true);
-
+    console.log(country);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onload = function() {
         if (this.status == 200) {
@@ -26,10 +27,17 @@ function destinationAjax(country, theAction) {
 }
 
 function outputDestination(destinations) {
-    destinations.forEach(element => {
-        console.log("A:"+element);
+    destinations.forEach(function(item) {
+        console.log(item.des_name);
         let option = document.createElement("option");
-        option.text = element;
+        option.text = item.des_name;
         selector_destination.add(option);
     });
+}
+
+function removeAllDestination(select) {
+    var length = select.options.length;
+for (i = length-1; i >= 0; i--) {
+  select.options[i] = null;
+}
 }
