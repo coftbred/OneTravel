@@ -1,5 +1,10 @@
 <?php
-include 'includes/header.php';
+  include 'config.php';
+  include 'function/postmanager.php';
+  include 'includes/header.php';
+
+
+
  ?>
 
   <div class="container ">
@@ -48,6 +53,18 @@ include 'includes/header.php';
          </a>
      </div>
    </div> <!-- end of slide show -->
+
+  <!-- SHOW POST (MOI LAM NE) -->
+  <div class="container">
+    <h2>Recent Post</h2>
+    <hr>
+    <div class="row align-item-center">
+      <?php 
+        $posts = getPosts(12, $conn);
+        echo outputPosts($posts);
+      ?>
+    </div>
+  </div>
 
 
  <div class="container pb-5">

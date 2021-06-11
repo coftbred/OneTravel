@@ -35,17 +35,15 @@
                     <div class="col-md-6 offset-md-3 text-left">
                         <form action="create.php" method="post">
                             <select name="country" onchange="changeCountry()" class="form-control mt-1 country">
-                                <option value="England">England</option>
-                                <option value="Japan">Japan</option>
-                                <option value="Dubai">Dubai</option>
-                                <option value="Italy">Italy</option>
+                                <option value="1">England</option>
+                                <option value="2">Japan</option>
+                                <option value="3">Dubai</option>
+                                <option value="4">Italy</option>
                             </select>
 
                             <select name="destination" class="form-control mt-1 destination">
-                                <option value="Italy">Italy</option>
-                                <option value="Italy">Italy</option>
-                                <option value="Italy">Italy</option>
-                                <option value="Italy">Italy</option>
+                                <option value="London">London</option>
+                                <option value="London 2">London 2</option>
                             </select>
 
                             <label for="title" class="mt-1" >  Title</label>
