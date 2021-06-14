@@ -1,6 +1,6 @@
 <?php
-    include '../config.php';
-    include '../classes/Post.php';
+    include 'config.php';
+    include 'classes/Post.php';
 
     function checkPost($POST, $user_id, &$errors, $conn) {
         $post_title = $POST['title'];
@@ -19,8 +19,8 @@
         }
     }
 
-    function getPosts ($num_posts, $conn, $limit = 12) {
-        $sql = "SELECT post.post_id, post.post_title, post.post_content, post.author_id, post.date_created, post.post_img, user.user_name FROM post JOIN user ON user.user_id = post.post_author ORDER BY post.date_created DESC LIMIT ?";
+    function getPosts($num_posts, $conn, $limit = 12) {
+        $sql = "SELECT post.post_id, post.post_title, post.post_content, post.author_id, post.date_created, post.post_img, user.user_name FROM post JOIN user ON user.user_id = post.author_id ORDER BY post.date_created DESC LIMIT ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $num_posts);
         $stmt->execute();

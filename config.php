@@ -1,8 +1,17 @@
 <?php
-  session_start();
-  if (!isset($_SESSION["logged_in"])) {
-      $_SESSION["logged_in"] = false;
-  }
+if(!isset($_SESSION['loggedin'])) {
+  $_SESSION['loggedin'] = false;
+}
 
-  include 'db.php';
+$current_query = $_SERVER['QUERY_STRING'];
+if(!isset($_SESSION['query_history'])) {
+  $_SESSION['query_history'] = [];
+  array_push($_SESSION['query_history'], $current_query);
+} else {
+  array_push($_SESSION['query_history'], $current_query);
+  if(count($_SESSION['query_history']) > 5) {
+    array_shift($_SESSION['query_history']);
+  }
+}
+include 'db.php';
 ?>

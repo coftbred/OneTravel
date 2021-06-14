@@ -1,4 +1,4 @@
-<?php 
+<?php
     include 'config.php';
     include 'function/postmanager.php';
     include 'includes/header.php';
@@ -6,11 +6,10 @@
     if (isset($_POST['POST'])) {
         //checkPost($_POST, $_SESSION['user_id'], $errors, $conn);
     }
-
 ?>
 
     <div class="contaier">
-        <?php if ($_SESSION['logged_in'] == true): ?>
+        <?php if ($_SESSION['loggedin'] == true): ?>
             <div class="mt-5 col-md-6 offset-md-3 text-center">
                 <h2 class="display-5">Please Login to Post</h2>
                 <p>Create an account or login to the website.</p>
@@ -20,7 +19,7 @@
             <div class="mt-3 col-md-6 offset-md-3">
                 <?php if(isset($errors)): ?>
                     <div class="alert alert-danger">
-                        <?php 
+                        <?php
                             foreach ($errors as $error) {
                                 echo $error . "<br>";
                             }
@@ -51,7 +50,7 @@
 
                             <label for="img" class="mt-1">Put your image link below</label>
                             <input type="text" name="img" class="form-control">
-                            
+
                             <label for="content" class="mt-1">  Content</label>
                             <textarea name="content" cols="50" rows="10" class="form-control"></textarea>
 
@@ -63,6 +62,6 @@
         <?php endif; ?>
     </div>
 
-<?php 
+<?php
     include 'includes/footer.php';
 ?>
