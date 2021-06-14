@@ -1,2 +1,0 @@
-# OneTravel
-Travel website project
