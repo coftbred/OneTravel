@@ -61,7 +61,9 @@
     <div class="row align-item-center">
       <?php 
         $posts = getPosts(12, $conn);
-        echo outputPosts($posts);
+        if (isset($posts)) {
+          echo outputPosts($posts);
+        }
       ?>
     </div>
   </div>
