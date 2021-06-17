@@ -20,7 +20,7 @@
         }
 
         public function createPost() {
-            $sql = "INSERT INTO post (author_id, post_title, post_content, post_img, destination_id) VALUES  (?,?,?,?,?,?)";
+            $sql = "INSERT INTO post (author_id, post_title, post_content, post_img, destination_id) VALUES  (?,?,?,?,?)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bind_param("isssi", $this->author_id, $this->post_title, $this->post_content, $this->post_img, $this->destination_id);
             $stmt->execute();

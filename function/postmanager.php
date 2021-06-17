@@ -16,6 +16,8 @@
 
         if (empty($errors)){
             $new_Post = new Post($author_id, $post_title, $post_content, $post_img, $destination_id, $conn);
+            $new_Post->createPost();
+            header("Location: index.php?createPost=success");
         }
     }
 
