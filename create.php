@@ -2,9 +2,12 @@
     include 'function/postmanager.php';
     include 'includes/header.php';
 
-    if (isset($_POST['POST'])) {
-        //checkPost($_POST, $_SESSION['user_id'], $errors, $conn);
+    if (isset($_POST['submit'])) {
+        echo "start checkPost";
+        checkPost($_POST, $_SESSION['user_id'], $errors, $conn);
+
     }
+
 
 
 ?>

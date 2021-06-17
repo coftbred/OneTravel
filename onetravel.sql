@@ -133,6 +133,22 @@ CREATE TABLE IF NOT EXISTS `user` (
 ); 
 COMMIT;
 
+INSERT INTO `destination` (`des_id`, `des_name`, `c_id`, `link`) VALUES
+(1, 'London', 1, 'NULL'),
+(2, 'London 2', 1, 'NULL'),
+(3, 'Tokyo', 2, 'NULL'),
+(4, 'Tokyo 2', 2, 'NULL'),
+(5, 'Khalifa', 3, 'NULL'),
+(6, 'Khalifa 2', 3, 'NULL'),
+(7, 'Rome', 4, 'NULL'),
+(8, 'Rome 2', 4, 'NULL');
+
+INSERT INTO `country` (`c_id`, `c_name`) VALUES
+(1, 'England'),
+(2, 'Japan'),
+(3, 'Dubai'),
+(4, 'Italy');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
