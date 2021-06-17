@@ -1,10 +1,10 @@
 <?php
-include 'db.php';
 //user errors assoc array to track errors and use as a bool
 // decide on log in / creating account. Passed by reference
 $errors = [];
 if(isset($_POST['login'])) {
   // process the login form, pass the post, errors (by ref) and db CONN
+  echo 'login';
   checkLogin($_POST, $errors, $conn);
 } elseif (isset($_POST['create'])) {
     // process the create form, pass the post, errors (by ref) and db CONN
@@ -23,6 +23,7 @@ function checkLogin($post, &$errors, $conn) {
     // if user exists, get their record and check the user submitted pw
     // against the hash in the DB
     $user_row = getUserRow($name, $conn);
+    var_dump($user_row);
     if(!password_verify($password, $user_row['password'])) {
       $errorMsg = "Incorred Password!";
       $errors['login_password'] = $errorMsg;
@@ -30,7 +31,7 @@ function checkLogin($post, &$errors, $conn) {
   }
   // if there are no errors in the array then login and redirect
   if(empty($errors)) {
-    loginUser($user_row['username'], $user_row['id'], $user_row['user_role']);
+    loginUser($user_row['user_name'], $user_row['user_id'], $user_row['user_role']);
   }
 }
 
@@ -108,7 +109,7 @@ function getUserRow($username, $conn) {
 }
 
 // inserts a new user into the db
-function createUser($conn, $user_name, $user_email, $user_password, $user_role) {
+function createUser($conn, $user_name, $user_email, $user_password, $user_role, $user_img) {
   $user_hash = password_hash($user_password, PASSWORD_DEFAULT);
   $sql = "INSERT INTO user (user_name, user_email, password, user_role, user_img) VALUES (?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($sql);
@@ -137,6 +138,7 @@ function loginUser($user_name, $user_id, $user_role) {
   $_SESSION['user_name'] = $user_name;
   $_SESSION['user_id'] = $user_id;
   $_SESSION['user_role'] = $user_role;
+
   header("Location: index.php?login=success");
 }
 
