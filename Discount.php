@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 include 'includes/header.php';
  ?>
    <div class="container-fluid pr-0 pl-0"> <!-- slide show -->
