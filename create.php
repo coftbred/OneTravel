@@ -6,6 +6,8 @@
     if (isset($_POST['POST'])) {
         //checkPost($_POST, $_SESSION['user_id'], $errors, $conn);
     }
+
+    var_dump($_SESSION)
 ?>
 
     <div class="contaier">
