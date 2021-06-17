@@ -1,5 +1,4 @@
 <?php
-    include 'config.php';
     include 'function/postmanager.php';
     include 'includes/header.php';
 
@@ -7,11 +6,11 @@
         //checkPost($_POST, $_SESSION['user_id'], $errors, $conn);
     }
 
-    var_dump($_SESSION)
+
 ?>
 
     <div class="contaier">
-        <?php if ($_SESSION['loggedin'] == true): ?>
+        <?php if ($_SESSION['loggedin'] == false): ?>
             <div class="mt-5 col-md-6 offset-md-3 text-center">
                 <h2 class="display-5">Please Login to Post</h2>
                 <p>Create an account or login to the website.</p>

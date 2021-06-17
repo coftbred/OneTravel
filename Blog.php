@@ -1,9 +1,6 @@
 <?php
-  include 'config.php';
   include 'function/postmanager.php';
   include 'includes/header.php';
-
-
 
  ?>
 
