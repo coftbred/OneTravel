@@ -28,9 +28,9 @@ function destinationAjax(country, theAction) {
 
 function outputDestination(destinations) {
     destinations.forEach(function(item) {
-        console.log(item.des_name);
+        console.log(item.name);
         let option = document.createElement("option");
-        option.text = item.des_name;
+        option.text = item.name;
         selector_destination.add(option);
     });
 }

@@ -1,7 +1,10 @@
 <?php
-  include 'function/postmanager.php';
+  include 'config.php';
+  include 'classes/Post.php';
   include 'includes/header.php';
 
+  $posts = new Post($conn);
+  $posts->getPosts(12);
  ?>
 
   <div class="container ">
@@ -55,11 +58,27 @@
   <div class="container">
     <h2>Recent Post</h2>
     <hr>
-    <div class="row align-item-center">
+    <div class="row align-item-center mt-2">
       <?php 
-        $posts = getPosts(12, $conn);
-        echo outputPosts($posts);
+        // $posts = getPosts(12, $conn);
+        // echo outputPosts($posts);
       ?>
+      <?php if(!empty($posts)): ?>
+        <?php foreach($posts->posts as $post): ?>
+          <div class="col-md-3 mt-4 mb-4 h-100" style='width:18rem;'>
+            <div class="card">
+              <img src="<?php echo $post['img'] ?>" style='max-width:100%; border-radius: 5%; border: 2px solid rgb(168 148 197); height: 25vh;' alt="">
+              <div class="card-body" style='background: none;' pd-2>
+                <p class='card-title' style='height:30%; width:100%;'><?php echo $post['post_title']; ?></p>
+                <em class='card-text' style='height:20%; width:100%;'>Author: <?php echo $post['username']; ?></em>
+                <a href='post.php?id=<?php echo $post['id']; ?>' style='height:fit-content;' class='btn btn-primary mt-2'>Go To Post</a>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <p>No posts</p>
+      <?php endif; ?>
     </div>
   </div>
 
@@ -298,10 +317,9 @@
     <hr>
     <div class="row align-item-center">
       <?php 
-        $posts = getPosts(12, $conn);
-        if (isset($posts)) {
-          echo outputPosts($posts);
-        }
+        
+        # 
+
       ?>
     </div>
   </div>
