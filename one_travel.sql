@@ -31,6 +31,7 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `comment_content` varchar(255) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `user_id` int(11),
   `post_id` int(11) DEFAULT NULL,
   `comment_id` int(11) DEFAULT NULL
 );

@@ -1,24 +1,31 @@
 <?php
-    include 'function/postmanager.php';
+    include 'config.php';
+    include 'classes/Post.php';
+    include 'classes/Destination.php';
     include 'includes/header.php';
 
     if (isset($_POST['submit'])) {
         echo "start checkPost";
-        checkPost($_POST, $_SESSION['user_id'], $errors, $conn);
+        # GET DESTINATION ID
+        $desID = new Destination($conn);
+        $desID->getID($_POST['destination']);
 
+
+        $new_Post = new Post($conn);
+        $new_Post->checkPost($_POST['title'], $_POST['content'], $_POST['img'], $desID->destination['id'], $_SESSION['user_id']);
+        $errors = $new_Post->errors;
     }
-
 
 
 ?>
 
     <div class="contaier">
-        <?php if ($_SESSION['loggedin'] == false): ?>
+        <?php if ($_SESSION['loggedin'] == False): ?>
             <div class="mt-5 col-md-6 offset-md-3 text-center">
                 <h2 class="display-5">Please Login to Post</h2>
                 <p>Create an account or login to the website.</p>
-            <button type="button" class="btn btn-block btn-outline-primary"><a href="SignUp.php"><i class="fas fa-sign-in-alt"></i> Create Account/Login</a></button>
-        </div>
+                <button type="button" class="btn btn-block btn-outline-primary"><a href="SignUp.php"><i class="fas fa-sign-in-alt"></i> Create Account/Login</a></button>
+            </div>
         <?php else: ?>
             <div class="mt-3 col-md-6 offset-md-3">
                 <?php if(isset($errors)): ?>
@@ -45,8 +52,9 @@
                             </select>
 
                             <select name="destination" class="form-control mt-1 destination">
-                                <option value="London">London</option>
-                                <option value="London 2">London 2</option>
+                                <option value="Greenwich">Greenwich</option>
+                                <option value="Warner Bros">Warner Bros</option>
+                                <option value="Tower of London">Tower of London</option>
                             </select>
 
                             <label for="title" class="mt-1" >  Title</label>
