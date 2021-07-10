@@ -63,7 +63,6 @@ commentcard.forEach((card, i) => {
       }
       xhr.send("delete-comment=true&comment_id="+comment_id)+"&post_id="+post_id;
     }
-
     console.log(e);
   })
 
@@ -85,6 +84,40 @@ function commentAjax(comment, postid, theaction) {
         let new_comment = JSON.parse(this.responseText);
         console.log(new_comment[0]);
         outputNewComment(new_comment[0]);
+        commentcard = document.querySelectorAll(".card");
+        commentcard.forEach((card, i) => {
+          card.addEventListener("click", function(e) {
+            e.preventDefault();
+            console.log("click");
+            if(e.target.classList.contains("delete-comment")){
+              console.log("delete");
+              let comment_id = e.target.parentNode.getAttribute("data-comment-number");
+              let post_id = e.target.parentNode.getAttribute("data-post-id");
+              let par = e.target.parentNode.parentNode.parentNode;
+              console.log(par);
+                  
+              let xhr = new XMLHttpRequest();
+              xhr.open("POST", "function/ajaxmanager.php", true);
+              xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+              xhr.onload = function() {
+                console.log("??");
+                if (this.status == 200) {
+                  console.log("1");
+                    console.log("hello");
+                    par.classList.add("shrinkStart");
+                    setTimeout(function(){
+                      par.classList.add("shrinkFinish");
+                      par.remove();
+                    },300);
+                
+                }
+              }
+              xhr.send("delete-comment=true&comment_id="+comment_id)+"&post_id="+post_id;
+            }
+            console.log(e);
+          })
+        
+        });
     }
   }
 
@@ -95,7 +128,7 @@ function commentAjax(comment, postid, theaction) {
 function outputNewComment(output) {
   
   let theoutput = `
-  <div class="col-md-6 offset-md-3 mt-5 mb-4">
+  <div class="col-md-6 offset-md-3 mt-5 mb-4" style='height: auto;'>
     <div class="card">
       <div class="card-header">
       ${output.username} | ${output.date_created}  
@@ -108,7 +141,7 @@ function outputNewComment(output) {
   </div>`;
   console.log("theoutput:");
   console.log(theoutput);
-  commentsdiv.insertAdjacentHTML("beforebegin", theoutput);
+  commentsdiv.insertAdjacentHTML("afterbegin", theoutput);
 
 }
 
