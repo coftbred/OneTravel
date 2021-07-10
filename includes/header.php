@@ -48,7 +48,7 @@
           </li>
           <?php if ($_SESSION['loggedin'] == true): ?>
             <li class="nav-item active">
-              <a class="nav-link" href="user.php?id=<?php echo $_SESSION['user_id']; ?>"><i class="fa fa-user"></i> <?php  echo htmlspecialchars($_SESSION["user_name"] . " ");?>  | <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="user.php?id=<?php echo $_SESSION['user_id']; ?>"><i class="fa fa-user"></i> <?php echo htmlspecialchars($_SESSION["user_name"] . " ");?>  | <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="logout.php"><i class="fa fa-door"></i>Logout<span class="sr-only">(current)</span></a>

@@ -1,7 +1,25 @@
 <?php
   include 'config.php';
   include 'function/account.php';
+  if(isset($_POST['login'])) {
+    $user_name = $_POST['name'];
+    $user_password = $_POST['password'];
+    $user = new User($conn);
+    $user->checkLogin($user_name, $user_password);
+    $errors = $user->errors;
+  }
 
+  if(isset($_POST['create'])) {
+    $postarr = Security::cleanOutput($_POST);
+    $user_name = $postarr['username'];
+    $user_email = $postarr['email'];
+    $user_password = $postarr['password1'];
+    $user_password2 = $postarr['password2'];
+    $user = new User($conn);
+    $user->checkRegistration($user_name, $user_email, $user_password, $user_password2);
+
+    $errors = $user->errors;
+  }
  ?>
 
  <style media="screen">

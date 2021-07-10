@@ -23,7 +23,6 @@ function checkLogin($post, &$errors, $conn) {
     // if user exists, get their record and check the user submitted pw
     // against the hash in the DB
     $user_row = getUserRow($name, $conn);
-    var_dump($user_row);
     if(!password_verify($password, $user_row['password'])) {
       $errorMsg = "Incorred Password!";
       $errors['login_password'] = $errorMsg;
@@ -31,7 +30,7 @@ function checkLogin($post, &$errors, $conn) {
   }
   // if there are no errors in the array then login and redirect
   if(empty($errors)) {
-    loginUser($user_row['user_name'], $user_row['user_id'], $user_row['user_role']);
+    loginUser($user_row['username'], $user_row['id'], $user_row['user_role']);
   }
 }
 
@@ -90,7 +89,7 @@ function checkCreate($post, &$errors, $conn) {
 
 //query the DB to see if a user exists. returns num_rows
 function checkForUser($username, $conn) {
-  $sql = "SELECT * FROM user WHERE user_name = ?";
+  $sql = "SELECT * FROM user WHERE username = ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("s", $username);
   $stmt->execute();
@@ -100,7 +99,7 @@ function checkForUser($username, $conn) {
 
 // fetch a user from the DB based on username
 function getUserRow($username, $conn) {
-  $sql = "SELECT * FROM user WHERE user_name = ?";
+  $sql = "SELECT * FROM user WHERE username = ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("s", $username);
   $stmt->execute();
@@ -111,7 +110,7 @@ function getUserRow($username, $conn) {
 // inserts a new user into the db
 function createUser($conn, $user_name, $user_email, $user_password, $user_role, $user_img) {
   $user_hash = password_hash($user_password, PASSWORD_DEFAULT);
-  $sql = "INSERT INTO user (user_name, user_email, password, user_role, user_img) VALUES (?, ?, ?, ?, ?)";
+  $sql = "INSERT INTO user (username, email, password, user_role, img) VALUES (?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("sssss", $user_name, $user_email, $user_hash, $user_role, $user_img);
   $stmt->execute();
