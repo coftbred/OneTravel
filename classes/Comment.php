@@ -1,11 +1,11 @@
-<?php 
-    
+<?php
+
     class Comment {
         // properties.
         public $comment_id;
         public $comment_text;
         public $comment_userID;
-        public $comment_postID;        
+        public $comment_postID;
         public $comments = [];
         public $insert_id;
         public $conn;
@@ -36,12 +36,12 @@
                             <div class='card'>
                                 <div class='card-header'>
                                     {$comment['username']} | {$comment['date_created']}
-                                    <a href='#' data-comment-number='{$comment['comment_id']}' data-post-id='{$comment['post_id']}'><button class='delete-comment float-right btn btn-outline-danger btn-sm'>X</button></a>                             
-                                </div>                        
+                                    <a href='#' data-comment-number='{$comment['comment_id']}' data-post-id='{$comment['post_id']}'><button class='delete-comment float-right btn btn-outline-danger btn-sm'>X</button></a>
+                                </div>
                                 <div class='body-body'>
                                     <p class='card-text'>{$comment['comment_content']}</p>
                                 </div>
-                            </div>                                        
+                            </div>
                         </div>
                     ";
                 else {
@@ -50,11 +50,11 @@
                             <div class='card'>
                                 <div class='card-header'>
                                     {$comment['username']} | {$comment['date_created']}
-                                </div>                        
+                                </div>
                                 <div class='body-body'>
                                     <p class='card-text'>{$comment['comment_content']}</p>
                                 </div>
-                            </div>                                        
+                            </div>
                         </div>
                     ";
                 }
