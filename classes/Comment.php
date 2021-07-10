@@ -38,7 +38,7 @@
                                     {$comment['username']} | {$comment['date_created']}
                                     <a href='#' data-comment-number='{$comment['comment_id']}' data-post-id='{$comment['post_id']}'><button class='delete-comment float-right btn btn-outline-danger btn-sm'>X</button></a>
                                 </div>
-                                <div class='body-body'>
+                                <div class='card-body'>
                                     <p class='card-text'>{$comment['comment_content']}</p>
                                 </div>
                             </div>
